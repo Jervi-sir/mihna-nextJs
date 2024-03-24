@@ -5,23 +5,25 @@ import { usePathname } from "next/navigation";
 
 
 export const SideBar = () => {
-  const { isSidebarOpen } = useSidebar();
 
   const router = usePathname();
 
   const isActive = (href) => {
-    return router === href;
+    if (href === '/') {
+      return router === '/';
+    }
+    return router.startsWith(href);
   };
 
 
   return (
     <div className="dashboard__sidebar -base scroll-bar-1 border-right-light lg:px-30">
       <div className="sidebar -base-sidebar">
+        {/* General */}
         <div className="sidebar__inner">
           <div>
             <div className="text-16 lh-1 fw-500 text-dark-1 mb-30">General</div>
             <div>
-
               <div className={`sidebar__item ${isActive('/') ? '-is-active' : ''}`}>
                 <a href="/" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
                   <i className="text-20 icon-discovery mr-15"></i>
@@ -47,6 +49,56 @@ export const SideBar = () => {
                 <a href="blog-list-1.html" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
                   <i className="text-20 icon-list mr-15"></i>
                   Articles
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Dashboard */}
+          <div>
+            <div className="text-16 lh-1 fw-500 text-dark-1 mb-30 mt-30">Dashboard ~ Instructor</div>
+            <div>
+              
+              <div className={`sidebar__item ${isActive('/dashboard') ? '-is-active' : ''}`}>
+                <a href="/dashboard" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
+                  <i className="text-20 icon-discovery mr-15"></i>
+                  Dashboard
+                </a>
+              </div>
+
+              <div className={`sidebar__item ${isActive('/announcements') ? '-is-active' : ''}`}>
+                <a href="/announcements" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
+                  <i className="text-20 icon-discovery mr-15"></i>
+                  Announcements
+                </a>
+              </div>
+
+              <div className={`sidebar__item ${isActive('/create_announcements') ? '-is-active' : ''}`}>
+                <a href="/create_announcements" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
+                  <i className="text-20 icon-discovery mr-15"></i>
+                  Create Formation
+                </a>
+              </div>
+
+              <div className={`sidebar__item ${isActive('/messages') ? '-is-active' : ''}`}>
+                <a href="/messages" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
+                  <i className="text-20 icon-discovery mr-15"></i>
+                  Messages
+                </a>
+              </div>
+
+              <div className={`sidebar__item ${isActive('/reviews') ? '-is-active' : ''}`}>
+                <a href="/reviews" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
+                  <i className="text-20 icon-discovery mr-15"></i>
+                  Reviews
+                </a>
+              </div>
+
+              <div className={`sidebar__item ${isActive('/settings') ? '-is-active' : ''}`}>
+                <a href="/settings" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
+                  <i className="text-20 icon-discovery mr-15"></i>
+                  Settings
                 </a>
               </div>
 

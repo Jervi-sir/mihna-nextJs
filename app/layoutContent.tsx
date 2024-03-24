@@ -20,7 +20,7 @@ export const BodyPart = ({ children, inter }) => {
               <div className={`dashboard -home-9 px-0 js-dashboard-home-9 ${isSidebarOpen ? '' : '-is-sidebar-hidden'}`}>
                 <SideBar />
                 <div className="dashboard__main mt-0">
-                  <div className="dashboard__content pt-0 px-15 pb-0">
+                  <div className="dashboard__content pt-0 px-15 bg-light-4">
                     {children}
                   </div>
                   <Footer />

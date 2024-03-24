@@ -12,7 +12,7 @@ export const Section3 = () => {
             </div>
           </div>
 
-          <div className="row y-gap-50 pt-60">
+          <div className="row y-gap-50 rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
             <div className="col-xl-3 col-lg-4 lg:d-none">
               <div className="pr-30 lg:pr-0">
 
@@ -28,10 +28,10 @@ export const Section3 = () => {
               </div>
             </div>
 
-            <div className="col-xl-9 col-lg-8">
+            <div className="col-xl-9 col-lg-8 pt-0">
               <div className="accordion js-accordion">
                 <div className="accordion__item">
-                  <div className="row y-gap-20 items-center justify-between pb-30">
+                  <div className="row y-gap-20 items-center justify-between ">
                     <div className="col-auto">
                       <div className="text-14 lh-12">Showing <span className="text-dark-1 fw-500">250</span> total results</div>
                     </div>
@@ -135,8 +135,7 @@ export const Section3 = () => {
 const CardHorizontal = () => {
   return (
     <>
-
-      <div className="col-12 border-bottom-light">
+      <div className="col-12 border-bottom-light pt-0">
         <a href="courses-single-1.html" className="coursesCard -type-1 row y-gap-20 flex-row items-center">
           <div className="col-xl-4">
             <div className="coursesCard__image rounded-8 relative">
