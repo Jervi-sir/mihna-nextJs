@@ -10,7 +10,7 @@ export const Section1 = () => {
           <div className="col-xl-7 col-lg-6">
             <div className="masthead-form">
               <h1 className="masthead__title text-white is-in-view">
-                Find a perfect Online Course
+                Find a perfect Local Training
               </h1>
               <p className="masthead__text text-16 lh-2 text-white pt-10 is-in-view">
                 You can access 7900+ different courses from 600<br className="lg:d-none" /> professional trainers for free
