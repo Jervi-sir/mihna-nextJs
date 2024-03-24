@@ -46,7 +46,7 @@ export const Section8 = () => {
               pagination={{
                 clickable: true,
                 //renderBullet: (index, className) => {
-                 // return `<div class="${className} pagination__item"><img src="${testimonials[index].image}" alt="image" /></div>`;
+                 // return `<div className="${className} pagination__item"><img src="${testimonials[index].image}" alt="image" /></div>`;
                 //},
               }}
               modules={[Pagination]}

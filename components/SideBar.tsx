@@ -13,14 +13,14 @@ export const SideBar = () => {
             <div>
 
               <div className="sidebar__item -is-active">
-                <a href="about-1.html" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
+                <a href="/" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
                   <i className="text-20 icon-discovery mr-15"></i>
                   Explore
                 </a>
               </div>
 
               <div className="sidebar__item ">
-                <a href="courses-list-1.html" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
+                <a href="/formations" className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500">
                   <i className="text-20 icon-play-button mr-15"></i>
                   Formations
                 </a>
