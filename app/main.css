@@ -4927,6 +4927,13 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-purple-1) !important;
 }
 
+
+.sidebar.-base-sidebar .pages.-is-active {
+  background-color: var(--color-purple-3);
+  color: var(--color-purple-1) !important;
+}
+
+
 .sidebar.-base-sidebar .sidebar__links > div > a {
   display: flex;
   align-items: center;
