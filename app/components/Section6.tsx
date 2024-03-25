@@ -56,7 +56,7 @@ export const Section6 = () => {
               {/* Swiper slides */}
               {
                 [1, 2, 3, 4, 5, 6, 7].map((e, index) => (
-                  <SwiperSlide >
+                  <SwiperSlide key={index} >
                     <div className="swiper-slide">
                       <div className="">
                         <img className="w-1/1" src="img/books/1.png" alt="book" />

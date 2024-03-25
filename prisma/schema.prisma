@@ -1,0 +1,143 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum CourseStatus {
+  PLANNED
+  CONFIRMED
+  COMPLETED
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             BigInt
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user                User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       BigInt
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+
+model Role {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  users User[]
+}
+
+model User {
+  id            BigInt         @id @default(autoincrement())
+  email         String         @unique
+  emailVerified DateTime?
+  password      String
+  name          String?
+  image         String?
+  roleId        Int
+  roles         Role           @relation(fields: [roleId], references: [id])
+  enrollments   Enrollment[]
+  courses       Course[]
+  announcements Announcement[]
+  feedbacks     Feedback[]
+  certificates  Certificate[]
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Course {
+  id            BigInt         @id @default(autoincrement())
+  title         String
+  description   String
+  coverImage    String?
+  videoUrl      String?
+  status        CourseStatus
+  instructorId  BigInt
+  userId        BigInt
+  instructor    User           @relation(fields: [userId], references: [id])
+  enrollments   Enrollment[]
+  announcements Announcement[]
+  feedbacks     Feedback[]
+  certificates  Certificate[]
+}
+
+model Enrollment {
+  id       BigInt @id @default(autoincrement())
+  userId   BigInt 
+  courseId BigInt 
+  user     User   @relation(fields: [userId], references: [id])
+  course   Course @relation(fields: [courseId], references: [id])
+}
+
+model Announcement {
+  id       BigInt    @id @default(autoincrement())
+  content  String?
+  courseId BigInt
+  userId   BigInt
+  course   Course  @relation(fields: [courseId], references: [id])
+  user     User    @relation(fields: [userId], references: [id])
+}
+
+model Feedback {
+  id       BigInt    @id @default(autoincrement())
+  content  String
+  rating   Int
+  userId   BigInt
+  courseId BigInt
+  user     User    @relation(fields: [userId], references: [id])
+  course   Course  @relation(fields: [courseId], references: [id])
+}
+
+model Certificate {
+  id       BigInt    @id @default(autoincrement())
+  courseId BigInt
+  userId   BigInt
+  user     User   @relation(fields: [userId], references: [id])
+  course   Course @relation(fields: [courseId], references: [id])
+}
+
+model Book {
+  id          BigInt     @id @default(autoincrement())
+  title       String
+  author      String
+  description String
+  imageUrl    String
+  downloadUrl String
+}
+
+model Article {
+  id          BigInt      @id @default(autoincrement())
+  title       String
+  content     String
+  author      String
+  publishedAt DateTime
+  imageUrl    String?
+}

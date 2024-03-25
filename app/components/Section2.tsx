@@ -1,9 +1,10 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
+import { getRandomCourses } from '@/services/courses';
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -36,6 +37,12 @@ const cards = [
 ]
 
 export const Section2 = () => {
+
+  useEffect(() => {
+    getRandomCourses(5)
+      .then(courses => console.log('Random courses:', courses))
+      .catch(error => console.error('Error fetching courses:', error));
+  }, [])
   return (
     <section className="layout-pt-lg layout-pb-md">
       <div className="container">
@@ -81,7 +88,7 @@ export const Section2 = () => {
           {/* Swiper slides */}
           {
             cards.map((e, index) => (
-              <SwiperSlide style={{ height: '16rem' }}>
+              <SwiperSlide key={index} style={{ height: '16rem' }}>
               <div className="featureCard -type-1 -featureCard-hover-3">
                 <div className="featureCard__content">
                   <div className="featureCard__icon">

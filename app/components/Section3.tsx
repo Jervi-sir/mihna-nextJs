@@ -93,7 +93,7 @@ export const Section3 = () => {
                   {/* Swiper slides */}
                   {
                     cards.map((e, index) => (
-                      <SwiperSlide >
+                      <SwiperSlide key={index} >
                         <CardComponent />
                       </SwiperSlide>
                     ))

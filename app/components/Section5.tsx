@@ -34,6 +34,7 @@ export const Section5 = () => {
           {
             [1, 2, 3, 4].map((e, index) => (
               <motion.div 
+                key={index}
                 className="col-lg-3 col-sm-6"
                 initial={{ ...slideLeftAnimation.initial}}
                 animate={slideLeftAnimation.animate}
